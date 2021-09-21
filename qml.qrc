@@ -2,5 +2,8 @@
     <qresource prefix="/">
         <file>main.qml</file>
         <file>RPMSliderComponent.qml</file>
+        <file>GearComponent.qml</file>
+        <file>Layout.qml</file>
+        <file>FpsCounter.qml</file>
     </qresource>
 </RCC>
