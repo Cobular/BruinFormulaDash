@@ -30,6 +30,8 @@ find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Quick REQUIRED)
 set(PROJECT_SOURCES
         main.cpp
         qml.qrc
+        WS2812Lib/ws2812-rpi.cpp
+        OtherLibs/mio.hpp
         canhandler.cpp
         canhandler.h
 )
@@ -61,6 +63,7 @@ set_target_properties(BruinFormulaDash PROPERTIES
     MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
     MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
 )
+
 
 if(QT_VERSION_MAJOR EQUAL 6)
     qt_import_qml_plugins(BruinFormulaDash)
