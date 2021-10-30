@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import QtQuick.Controls
+import com.cobular.CanHandler 1.0
 
 Rectangle {
     id: rectangle
@@ -11,6 +12,10 @@ Rectangle {
         id: dataObj
         property bool alert: false;
         property int maxRPM: 14000
+    }
+
+    CanHandler {
+        id: canhandler
     }
 
     // Creates an instance of the slider component we just made in RPMSliderComponent.qml
@@ -34,7 +39,7 @@ Rectangle {
     Button {
         id: alertButton
         y: 100
-        text: "Alert Button!!!"
+        text: canhandler.userName
         onClicked: () => dataObj.alert = !dataObj.alert
     }
 
@@ -44,8 +49,9 @@ Rectangle {
         alert: dataObj.alert
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.bottomMargin: 0
-
     }
+
+//    CoolantTemp {
+
+//    }
 }
-
-

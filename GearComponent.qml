@@ -1,17 +1,16 @@
 import QtQuick 2.0
 
-Rectangle {
+AlertRectangle {
     id: rectangle
     width: 440
     height: 519
-    // If alert is true and if this is the target, go transparent otherwise read otherwise transparent
-    color: alert ? alertTarget === "GearComponent" ? "#000000" : "red" : "#00ffffff"
     border.color: "#ffffff"
     border.width: 5
+    componentName: "GearComponent"
 
     property int rpm: 16666
-    property bool alert: false
-    property string alertTarget: ""
+    property alias alert: rectangle.alert
+    property alias alertTarget: rectangle.alertTarget
 
     function parseGear(rpm) {
         if (rpm > 1000 && rpm < 2000)

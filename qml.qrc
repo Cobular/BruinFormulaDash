@@ -5,5 +5,9 @@
         <file>GearComponent.qml</file>
         <file>Layout.qml</file>
         <file>FpsCounter.qml</file>
+        <file>CoolantTemp.qml</file>
+        <file>AlertRectangle.qml</file>
+        <file>canhandler.h</file>
+        <file>canhandler.cpp</file>
     </qresource>
 </RCC>

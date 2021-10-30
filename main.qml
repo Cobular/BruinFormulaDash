@@ -16,7 +16,6 @@ Window {
 
     Item {
         id: fpsCorner
-        visible: Backend.showFPS
         enabled: visible
 
         Text {
