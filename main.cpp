@@ -1,6 +1,6 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
-#include <WS2812Lib/ws2812-rpi.h>
+//#include <WS2812Lib/ws2812-rpi.h>
 #include "canhandler.h"
 struct package_manager {
     static constexpr auto package_name = "com.cobular.CanHandler";
@@ -10,8 +10,8 @@ struct package_manager {
 
 int main(int argc, char *argv[])
 {
-    auto test = new QT_WS2812();
-    delete test;
+//    auto test = new QT_WS2812();
+//    delete test;
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 #endif

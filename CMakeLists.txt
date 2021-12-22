@@ -30,7 +30,7 @@ find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Quick REQUIRED)
 set(PROJECT_SOURCES
         main.cpp
         qml.qrc
-        WS2812Lib/ws2812-rpi.cpp
+#        WS2812Lib/ws2812-rpi.cpp
         OtherLibs/mio.hpp
         canhandler.cpp
         canhandler.h
