@@ -52,7 +52,7 @@ Rectangle {
         anchors.bottomMargin: 0
     }
 
-//    CoolantTemp {
+    CoolantTemp {
 
-//    }
+    }
 }

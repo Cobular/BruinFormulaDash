@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/media">
+        <file alias="battery">src/media/battery.svg</file>
+        <file alias="brake">src/media/brake.png</file>
+        <file alias="coolant">src/media/coolant.svg</file>
+    </qresource>
+</RCC>
