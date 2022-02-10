@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>src/components/AlertRectangle.qml</file>
+        <file>src/components/BatteryVoltage.qml</file>
+        <file>src/components/CoolantTemp.qml</file>
+        <file>src/components/FpsCounter.qml</file>
+        <file>src/components/GearComponent.qml</file>
+        <file>src/components/RPMSliderComponent.qml</file>
+        <file>src/Layout.qml</file>
+        <file>src/code/canhandler.cpp</file>
+        <file>src/code/canhandler.h</file>
+    </qresource>
+    <qresource prefix="/src"/>
+</RCC>
