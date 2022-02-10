@@ -53,6 +53,14 @@ Rectangle {
     }
 
     CoolantTemp {
+        x: 8
+        y: 91
+
+    }
+
+    BatteryVoltage {
+        x: 0
+        y: 479
 
     }
 }
