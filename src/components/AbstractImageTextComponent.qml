@@ -11,6 +11,7 @@ AlertRectangle {
     property alias componentName: alertRectangle.componentName
     property alias alert: alertRectangle.alert
     property alias alertTarget: alertRectangle.alertTarget
+    property string color: "white"
 
     Row {
         id: row
@@ -34,6 +35,7 @@ AlertRectangle {
             text: Math.round(value)
             anchors.verticalCenter: parent.verticalCenter
             font.pointSize: 90
+            color: alertRectangle.color
         }
 
         Text {
@@ -41,6 +43,7 @@ AlertRectangle {
             text: suffix
             anchors.verticalCenter: parent.verticalCenter
             font.pointSize: 90
+            color: alertRectangle.color
         }
     }
 }
