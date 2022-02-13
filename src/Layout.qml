@@ -27,6 +27,15 @@ Rectangle {
         maxRpm: dataObj.maxRPM
     }
 
+    RPMSliderLabels {
+        id: sliderLabels
+        maxRpm: dataObj.maxRPM
+        width: sliderComponent.width - 4
+        height: sliderComponent.height
+        x: sliderComponent.x
+        y: sliderComponent.y
+    }
+
     // This is just for testing, it's a slider that we can use to test our component
     Slider {
         id: slider
