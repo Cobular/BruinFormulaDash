@@ -32,7 +32,7 @@ AlertRectangle {
 
         Text {
             height: 130
-            text: Math.round(value)
+            text: value
             anchors.verticalCenter: parent.verticalCenter
             font.pointSize: 90
             color: alertRectangle.color

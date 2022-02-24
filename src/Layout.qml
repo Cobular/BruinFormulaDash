@@ -56,11 +56,20 @@ Rectangle {
         x: 8
         y: 91
 
+        temp: 50.255
+
     }
 
     BatteryVoltage {
         x: 0
         y: 479
+        voltage: 55.55
 
+    }
+
+    BrakeRatio {
+        x: 0
+        y: 0
+        max: 80.88
     }
 }

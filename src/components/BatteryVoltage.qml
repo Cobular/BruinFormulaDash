@@ -9,6 +9,8 @@ AbstractImageTextComponent {
     image_path: "/media/battery"
     suffix: "V"
 
+    property double volt: -1
+    value: volt.tofixed(2)
     property alias voltage: coolantRectangle.value
     property alias alert: coolantRectangle.alert
     property alias alertTarget: coolantRectangle.alertTarget
