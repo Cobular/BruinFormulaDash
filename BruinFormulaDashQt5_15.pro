@@ -1,4 +1,4 @@
-QT += quick
+QT += quick serialbus
 
 CONFIG += c++11
 

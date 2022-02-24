@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QString>
 #include <qqml.h>
+#include <QtSerialBus/QCanBus>
 
 class CanHandler : public QObject
 {
