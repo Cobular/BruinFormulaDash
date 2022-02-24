@@ -12,6 +12,7 @@ AlertRectangle {
     property alias componentName: alertRectangle.componentName
     property alias alert: alertRectangle.alert
     property alias alertTarget: alertRectangle.alertTarget
+    property string color: "white"
 
     Row {
         id: row
@@ -46,6 +47,7 @@ AlertRectangle {
             horizontalAlignment: Text.AlignLeft
             verticalAlignment: Text.AlignBottom
             font.pointSize: 90
+            color: alertRectangle.color
         }
 
         Text {
@@ -53,6 +55,7 @@ AlertRectangle {
             text: suffix
             anchors.verticalCenter: parent.verticalCenter
             font.pointSize: 90
+            color: alertRectangle.color
         }
 
 
