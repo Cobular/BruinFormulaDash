@@ -6,6 +6,7 @@
 #include <qqml.h>
 #include <QtSerialBus/QCanBus>
 #include <QDebug>
+#include <QTimer>
 
 class CanHandler : public QObject
 {
@@ -48,7 +49,7 @@ public:
 
     void setTestCanData(const qint64 &a) {
         QString test = QStringLiteral("%1").arg(a);
-        qDebug(qPrintable(test));
+        qDebug() << qPrintable(test);
         if (a != m_canTestData) {
             m_canTestData = a;
             emit testCanDataChanged();
@@ -58,9 +59,20 @@ public:
         return m_canTestData;
     }
 
+    void setSocketCanStatus(const QString &a) {
+        if (a != m_socketCanStatus) {
+            m_socketCanStatus = a;
+            emit numberFramesWrittenChanged();
+        }
+    }
+    QString socketCanStatus() const {
+        return m_socketCanStatus;
+    }
+
 signals:
     void numberFramesWrittenChanged();
     void canStatusMessageChanged();
+    void socketCanStatusChanged();
     void testCanDataChanged();
 
     void canConnectionFailed(QString err_str);
@@ -69,8 +81,10 @@ signals:
 private:
     qint64 m_numberFramesWritten = 0;
     QString m_canStatusMessage = "No Status Yet..";
+    QString m_socketCanStatus = "No Status Yet..";
     qint64 m_canTestData = -1;
     std::unique_ptr<QCanBusDevice> m_canDevice;
+    QTimer *m_busStatusTimer = nullptr;
 };
 
 #endif // BACKEND_H

@@ -1,10 +1,12 @@
 #include "canhandler.h"
 
 CanHandler::CanHandler(QObject *parent) :
-    QObject(parent)
+    QObject(parent),
+    m_busStatusTimer(new QTimer(this))
 {
     connectCanBus();
 
+    connect(m_busStatusTimer, &QTimer::timeout, this, &CanHandler::busStatus);
 }
 
 void CanHandler::connectCanBus()
@@ -39,52 +41,53 @@ void CanHandler::connectCanBus()
             const QVariant dataBitRate =
                     m_canDevice->configurationParameter(QCanBusDevice::DataBitRateKey);
 //            if (isCanFd && dataBitRate.isValid()) {
-//                m_status->setText(tr("Plugin: %1, connected to %2 at %3 / %4 kBit/s")
+//                setSocketCanStatus(tr("Plugin: %1, connected to %2 at %3 / %4 kBit/s")
 //                                  .arg(p.pluginName).arg(p.deviceInterfaceName)
 //                                  .arg(bitRate.toInt() / 1000).arg(dataBitRate.toInt() / 1000));
 //            } else {
-//                m_status->setText(tr("Plugin: %1, connected to %2 at %3 kBit/s")
+//                setSocketCanStatus(tr("Plugin: %1, connected to %2 at %3 kBit/s")
 //                                  .arg(p.pluginName).arg(p.deviceInterfaceName)
 //                                  .arg(bitRate.toInt() / 1000));
 //            }
-        } else {
-//            m_status->setText(tr("Plugin: %1, connected to %2")
-//                    .arg(p.pluginName).arg(p.deviceInterfaceName));
         }
+//        else {
+//            setSocketCanStatus(tr("Plugin: %1, connected to %2")
+//                    .arg(p.pluginName).arg(p.deviceInterfaceName));
+//        }
 
-//        if (m_canDevice->hasBusStatus())
-//            m_busStatusTimer->start(2000);
-//        else
-//            m_ui->busStatus->setText(tr("No CAN bus status available."));
+        if (m_canDevice->hasBusStatus())
+            m_busStatusTimer->start(2000);
+        else
+            setSocketCanStatus(tr("No CAN bus status available."));
     }
 }
 
-//void CanHandler::busStatus()
-//{
-//    if (!m_canDevice || !m_canDevice->hasBusStatus()) {
-//        m_ui->busStatus->setText(tr("No CAN bus status available."));
-//        m_busStatusTimer->stop();
-//        return;
-//    }
+void CanHandler::busStatus()
+{
+    if (!m_canDevice || !m_canDevice->hasBusStatus()) {
+        setSocketCanStatus(tr("No CAN bus status available."));
+        m_busStatusTimer->stop();
+        return;
+    }
 
-//    switch (m_canDevice->busStatus()) {
-//    case QCanBusDevice::CanBusStatus::Good:
-//        m_ui->busStatus->setText("CAN bus status: Good.");
-//        break;
-//    case QCanBusDevice::CanBusStatus::Warning:
-//        m_ui->busStatus->setText("CAN bus status: Warning.");
-//        break;
-//    case QCanBusDevice::CanBusStatus::Error:
-//        m_ui->busStatus->setText("CAN bus status: Error.");
-//        break;
-//    case QCanBusDevice::CanBusStatus::BusOff:
-//        m_ui->busStatus->setText("CAN bus status: Bus Off.");
-//        break;
-//    default:
-//        m_ui->busStatus->setText("CAN bus status: Unknown.");
-//        break;
-//    }
-//}
+    switch (m_canDevice->busStatus()) {
+    case QCanBusDevice::CanBusStatus::Good:
+        setSocketCanStatus("CAN bus status: Good.");
+        break;
+    case QCanBusDevice::CanBusStatus::Warning:
+        setSocketCanStatus("CAN bus status: Warning.");
+        break;
+    case QCanBusDevice::CanBusStatus::Error:
+        setSocketCanStatus("CAN bus status: Error.");
+        break;
+    case QCanBusDevice::CanBusStatus::BusOff:
+        setSocketCanStatus("CAN bus status: Bus Off.");
+        break;
+    default:
+        setSocketCanStatus("CAN bus status: Unknown.");
+        break;
+    }
+}
 
 static QString frameFlags(const QCanBusFrame &frame)
 {

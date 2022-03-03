@@ -77,5 +77,6 @@ Rectangle {
         y: 578
         canCountProp: canhandler.numberFramesWritten
         canStatusMessage: canhandler.canStatusMessage
+        socketCanStatusMessage: canhandler.socketCanStatus
     }
 }

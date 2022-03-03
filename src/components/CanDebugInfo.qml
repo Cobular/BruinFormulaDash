@@ -5,7 +5,9 @@ Item {
     height: 14
 
     property string canStatusMessage: "NO MESSAGE"
+    property string socketCanStatusMessage: "NO MESSAGE"
     property int canCountProp: -1
+    property string col: "#0900ff"
 
     Row {
         id: row
@@ -14,28 +16,42 @@ Item {
 
         Text {
             id: canStatusPrefix
-            color: "#0900ff"
+            color: col
             text: qsTr("CAN Status:  ")
             font.pixelSize: 12
         }
 
         Text {
             id: canStatus
-            color: "#0900ff"
+            color: col
             text: canStatusMessage
             font.pixelSize: 12
         }
 
         Text {
+            id: socketcanStatusPrefix
+            color: col
+            text: qsTr("SocketCAN Status:  ")
+            font.pixelSize: 12
+        }
+
+        Text {
+            id: socketcanStatus
+            color: col
+            text: socketCanStatusMessage
+            font.pixelSize: 12
+        }
+
+        Text {
             id: canCountPrefix
-            color: "#0900ff"
+            color: col
             text: qsTr("    CAN Count:  ")
             font.pixelSize: 12
         }
 
         Text {
             id: canCount
-            color: "#0900ff"
+            color: col
             text: canCountProp
             font.pixelSize: 12
         }
