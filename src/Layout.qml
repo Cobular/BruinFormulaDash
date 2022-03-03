@@ -36,14 +36,10 @@ Rectangle {
         y: sliderComponent.y
     }
 
-    // This is just for testing, it's a slider that we can use to test our component
-    Slider {
-        id: slider
-        // To figure out these properties, I googled for it and found an example in the QT documentation.
-        from: 0
-        value: 25
-        to: dataObj.maxRPM
-        width: parent.width
+    MPHDisplayComponent {
+        id: mphCounter
+        height: sliderComponent.height
+        mph: 23
     }
 
     Button {
