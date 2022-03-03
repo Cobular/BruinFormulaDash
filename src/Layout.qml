@@ -54,22 +54,22 @@ Rectangle {
 
     CoolantTemp {
         x: 8
-        y: 91
+        y: 192
 
-        temp: 50.255
+        temp: 50.25
 
     }
 
     BatteryVoltage {
-        x: 0
-        y: 479
-        voltage: 55.55
+        x: 8
+        y: 468
+        voltage: 50.555
 
     }
 
     BrakeRatio {
-        x: 0
-        y: 0
-        max: 80.88
+        x: 745
+        y: 459
+        max: 88.88
     }
 }

@@ -4,13 +4,13 @@ AbstractImageTextComponent {
     id: coolantRectangle
     width: 250
     height: 133
-    color: "#FFFFFF"
 
     componentName: "Brake"
     image_path: "/media/brake"
+    suffix: "%"
 
     property double max: -1
-    value: max.tofixed(2)
+    value: max.toFixed(2)
 
     property alias alert: coolantRectangle.alert
     property alias alertTarget: coolantRectangle.alertTarget

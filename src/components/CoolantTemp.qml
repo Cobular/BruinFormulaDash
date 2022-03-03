@@ -10,7 +10,8 @@ AbstractImageTextComponent {
     image_path: "/media/coolant"
 
     property double temp: -1
-    value: temp.tofixed(2)
+    value: temp.toFixed(2)
+
     property alias alert: coolantRectangle.alert
     property alias alertTarget: coolantRectangle.alertTarget
 }
