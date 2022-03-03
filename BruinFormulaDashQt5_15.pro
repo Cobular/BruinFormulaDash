@@ -1,4 +1,4 @@
-QT += quick
+QT += quick serialbus
 
 CONFIG += c++11
 
@@ -25,7 +25,8 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 DISTFILES += \
-    src/components/*
+    src/components/* \
+    src/components/CanDebugInfo.qml
     src/Layout.qml
 
 HEADERS += \

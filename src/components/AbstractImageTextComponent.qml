@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import QtGraphicalEffects 1.0
 
 AlertRectangle {
     id: alertRectangle
@@ -19,6 +20,7 @@ AlertRectangle {
         y: 0
         height: 113
 
+
         Image {
             id: image
             width: 90
@@ -28,28 +30,41 @@ AlertRectangle {
             fillMode: Image.PreserveAspectFit
             sourceSize.height: image.width
             sourceSize.width: image.height
+
+            Colorize {
+                anchors.fill: image
+                source: image
+                hue: 1
+                saturation: 1
+                lightness: 1
+            }
         }
 
         Text {
             height: 130
-            text: Math.round(value)
             anchors.verticalCenter: parent.verticalCenter
-            font.pointSize: 90
+            horizontalAlignment: Text.AlignLeft
+            verticalAlignment: Text.AlignBottom
+            font.pointSize: 80
             color: alertRectangle.color
+            text: "51"
         }
 
         Text {
             height: 130
             text: suffix
             anchors.verticalCenter: parent.verticalCenter
-            font.pointSize: 90
+            font.pointSize: 80
             color: alertRectangle.color
         }
+
+
     }
+
 }
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:1.66}
+    D{i:0;formeditorZoom:1.66}D{i:2;invisible:true}
 }
 ##^##*/

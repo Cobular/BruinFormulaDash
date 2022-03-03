@@ -22,7 +22,7 @@ Rectangle {
     // Creates an instance of the slider component we just made in RPMSliderComponent.qml
     RPMSliderComponent {
         id: sliderComponent
-        rpm: slider.value  // Here we set the custom property we defined to be the value of the below slider.
+        rpm: canhandler.testCanData // Here we set the custom property we defined to be the value of the below slider.
         // You'll see when this is ran that it is linked, so changing the slider position is reflected in the rpm slider, controlled through this property binding
         maxRpm: dataObj.maxRPM
     }
@@ -55,7 +55,7 @@ Rectangle {
 
     GearComponent {
         anchors.bottom: parent.bottom
-        rpm: slider.value
+        rpm: canhandler.testCanData
         alert: dataObj.alert
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.bottomMargin: 0
@@ -70,6 +70,12 @@ Rectangle {
     BatteryVoltage {
         x: 0
         y: 479
-
+    }
+    
+    CanDebugInfo {
+        x: 8
+        y: 578
+        canCountProp: canhandler.numberFramesWritten
+        canStatusMessage: canhandler.canStatusMessage
     }
 }

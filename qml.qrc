@@ -15,6 +15,7 @@
         <file>src/components/SingleRPMSliderLabel.qml</file>
         <file>src/components/BlackOnWhiteOutlinedNumber.qml</file>
         <file>src/components/EmptyComponent.qml</file>
+        <file>src/components/CanDebugInfo.qml</file>
     </qresource>
     <qresource prefix="/src"/>
 </RCC>
