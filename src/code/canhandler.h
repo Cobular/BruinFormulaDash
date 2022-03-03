@@ -62,7 +62,7 @@ public:
     void setSocketCanStatus(const QString &a) {
         if (a != m_socketCanStatus) {
             m_socketCanStatus = a;
-            emit numberFramesWrittenChanged();
+            emit socketCanStatusChanged();
         }
     }
     QString socketCanStatus() const {

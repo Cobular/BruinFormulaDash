@@ -118,7 +118,7 @@ void CanHandler::processReceivedFrames()
             view = m_canDevice->interpretErrorFrame(frame);
             setCanStatusMessage(view);
             return;
-        }
+        } else
 
         view = frame.toString();
 
@@ -127,8 +127,10 @@ void CanHandler::processReceivedFrames()
                 .arg(frame.timeStamp().microSeconds() / 100, 4, 10, QLatin1Char('0'));
 
         const QString flags = frameFlags(frame);
-
-        setTestCanData(view.toInt());
+\
+         bool bStatus = false;
+         QString hexData = QString::fromStdString(frame.payload().toHex(':').toStdString());
+        setTestCanData(hexData.toInt(&bStatus, 16));
 //        m_ui->receivedMessagesEdit->append(time + flags + view);
     }
 }
