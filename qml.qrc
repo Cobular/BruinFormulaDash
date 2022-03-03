@@ -11,6 +11,7 @@
         <file>src/code/canhandler.cpp</file>
         <file>src/code/canhandler.h</file>
         <file>src/components/AbstractImageTextComponent.qml</file>
+        <file>src/components/CanDebugInfo.qml</file>
     </qresource>
     <qresource prefix="/src"/>
 </RCC>

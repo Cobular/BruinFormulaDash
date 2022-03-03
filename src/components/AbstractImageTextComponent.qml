@@ -42,19 +42,19 @@ AlertRectangle {
 
         Text {
             height: 130
-            text: Math.round(value)
             anchors.verticalCenter: parent.verticalCenter
             horizontalAlignment: Text.AlignLeft
             verticalAlignment: Text.AlignBottom
-            font.pointSize: 90
+            font.pointSize: 80
             color: alertRectangle.color
+            text: "51"
         }
 
         Text {
             height: 130
             text: suffix
             anchors.verticalCenter: parent.verticalCenter
-            font.pointSize: 90
+            font.pointSize: 80
             color: alertRectangle.color
         }
 
