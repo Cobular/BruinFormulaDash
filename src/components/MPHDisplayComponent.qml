@@ -5,12 +5,6 @@ Item {
     property int mph: 101
     width: 112
 
-    Rectangle {
-        color: "#ffffff"
-        width: parent.width
-        height: parent.height
-    }
-
     Text {
         id: mphUnitsLabel
         text: "MPH"
