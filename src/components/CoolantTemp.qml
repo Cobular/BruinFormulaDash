@@ -5,6 +5,8 @@ AbstractImageTextComponent {
     width: 250
     height: 113
 
+    color: "#4ED4FF"
+
     componentName: "Coolant"
     image_path: "/media/coolant"
 

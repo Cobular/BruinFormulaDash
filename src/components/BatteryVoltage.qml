@@ -5,6 +5,8 @@ AbstractImageTextComponent {
     width: 250
     height: 113
 
+    color: "#FBFF4E"
+
     componentName: "Battery"
     image_path: "/media/battery"
     suffix: "V"

@@ -30,14 +30,6 @@ AlertRectangle {
             fillMode: Image.PreserveAspectFit
             sourceSize.height: image.width
             sourceSize.width: image.height
-
-            Colorize {
-                anchors.fill: image
-                source: image
-                hue: 1
-                saturation: 1
-                lightness: 1
-            }
         }
 
         Text {
