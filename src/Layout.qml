@@ -42,6 +42,15 @@ Rectangle {
         mph: 23
     }
 
+    AFRDisplayComponent {
+        id: afrCounter
+        x: 820
+        y: 90
+        width: 140
+        height: 80
+        afr: 82.1
+    }
+
     Button {
         id: alertButton
         y: 100
@@ -60,7 +69,6 @@ Rectangle {
     CoolantTemp {
         x: 8
         y: 91
-
     }
 
     BatteryVoltage {
