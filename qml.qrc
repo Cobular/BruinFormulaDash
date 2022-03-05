@@ -18,6 +18,7 @@
         <file>src/components/CanDebugInfo.qml</file>
         <file>src/components/MPHDisplayComponent.qml</file>
         <file>src/components/AFRDisplayComponent.qml</file>
+        <file>src/components/BrakeBias.qml</file>
     </qresource>
     <qresource prefix="/src"/>
 </RCC>

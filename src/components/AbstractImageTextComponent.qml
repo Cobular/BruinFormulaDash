@@ -8,6 +8,9 @@ AlertRectangle {
 
     property string image_path: ""
     property double value: 50.5
+    property int dp: 0
+    property int fontsize: 80
+    property string prefix: ""
     property string suffix: ""
     property alias componentName: alertRectangle.componentName
     property alias alert: alertRectangle.alert
@@ -41,20 +44,26 @@ AlertRectangle {
         }
 
         Text {
+            function parse(prefix, value, dp) {
+                return prefix + value.toFixed(dp);
+            }
+
             height: 130
             anchors.verticalCenter: parent.verticalCenter
             horizontalAlignment: Text.AlignLeft
-            verticalAlignment: Text.AlignBottom
-            font.pointSize: 80
+            verticalAlignment: Text.AlignVCenter
+            font.pointSize: fontsize
             color: alertRectangle.color
-            text: "51"
+            text: parse(prefix, value, dp)
         }
 
         Text {
             height: 130
             text: suffix
             anchors.verticalCenter: parent.verticalCenter
-            font.pointSize: 80
+            horizontalAlignment: Text.AlignLeft
+            verticalAlignment: Text.AlignVCenter
+            font.pointSize: fontsize
             color: alertRectangle.color
         }
 

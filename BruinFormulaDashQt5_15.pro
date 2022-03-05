@@ -26,6 +26,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 DISTFILES += \
     src/components/* \
+    src/components/BrakeBias.qml \
     src/components/CanDebugInfo.qml
     src/Layout.qml
 
