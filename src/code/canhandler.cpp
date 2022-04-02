@@ -109,7 +109,7 @@ static QString framePayloadString(const QCanBusFrame &frame) {
 
 static qlonglong framePayloadUint(const QCanBusFrame &frame) {
     bool didFail = false;
-    quint32 test =  frame.payload().toHex().toInt(&didFail, 16);
+    qlonglong test =  frame.payload().toHex().toInt(&didFail, 16);
 
     // Seems to be reporting an error incorrectly
 //    if (didFail) {
@@ -145,14 +145,26 @@ void CanHandler::processReceivedFrames()
 \
          switch (frame.frameId()) {
             case 0x100:
-                 setTestCanData(framePayloadUint(frame));
-                 break;
-            case 0x631:
+                setTestCanData(framePayloadUint(frame));
+                break;
+            case 0x1:
+                qDebug() << "Recieved RPM data";
                 setRpmData(framePayloadUint(frame));
+                break;
+            case 0x2:
+                setCoolantData(framePayloadUint(frame));
+                break;
+            case 0x3:
+                setVoltageData(framePayloadUint(frame));
+                break;
+            case 0x4:
+                setAfrData(framePayloadUint(frame));
+                break;
+            case 0x5:
+                setBiasData(framePayloadUint(frame));
                 break;
          }
 
-//        setTestCanData(framePayloadUint(frame));
     }
 }
 

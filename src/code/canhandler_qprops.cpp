@@ -33,6 +33,18 @@ qint64 CanHandler::testCanData() const {
     return m_canTestData;
 }
 
+void CanHandler::setSocketCanStatus(const QString &a) {
+    if (a != m_socketCanStatus) {
+        m_socketCanStatus = a;
+        emit socketCanStatusChanged();
+    }
+}
+QString CanHandler::socketCanStatus() const {
+    return m_socketCanStatus;
+}
+
+
+
 void CanHandler::setRpmData(const qint64 &a) {
     if (a != m_rmpData) {
         m_rmpData = a;
@@ -43,12 +55,45 @@ qint64 CanHandler::rpmData() const {
     return m_rmpData;
 }
 
-void CanHandler::setSocketCanStatus(const QString &a) {
-    if (a != m_socketCanStatus) {
-        m_socketCanStatus = a;
-        emit socketCanStatusChanged();
+void CanHandler::setCoolantData(const qint64 &a) {
+    if (a != m_coolantData) {
+        m_coolantData = a;
+        emit coolantDataChanged();
     }
 }
-QString CanHandler::socketCanStatus() const {
-    return m_socketCanStatus;
+qint64 CanHandler::coolantData() const {
+    return m_coolantData;
+}
+
+
+void CanHandler::setAfrData(const qint64 &a) {
+    if (a != m_afrData) {
+        m_afrData = a;
+        emit afrDataChanged();
+    }
+}
+qint64 CanHandler::afrData() const {
+    return m_afrData;
+}
+
+
+void CanHandler::setBiasData(const qint64 &a) {
+    if (a != m_biasData) {
+        m_biasData = a;
+        emit biasDataChanged();
+    }
+}
+qint64 CanHandler::biasData() const {
+    return m_biasData;
+}
+
+
+void CanHandler::setVoltageData(const qint64 &a) {
+    if (a != m_voltageData) {
+        m_voltageData = a;
+        emit voltageDataChanged();
+    }
+}
+qint64 CanHandler::voltageData() const {
+    return m_voltageData;
 }
