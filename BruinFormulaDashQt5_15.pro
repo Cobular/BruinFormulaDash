@@ -28,6 +28,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 DISTFILES += \
     src/components/* \
     src/components/CanDebugInfo.qml
+    src/components/BrakeRatio.qml
     src/Layout.qml
 
 HEADERS += \

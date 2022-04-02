@@ -11,6 +11,7 @@
         <file>src/code/canhandler.cpp</file>
         <file>src/code/canhandler.h</file>
         <file>src/components/AbstractImageTextComponent.qml</file>
+        <file>src/components/BrakeRatio.qml</file>
         <file>src/components/RPMSliderLabels.qml</file>
         <file>src/components/SingleRPMSliderLabel.qml</file>
         <file>src/components/BlackOnWhiteOutlinedNumber.qml</file>

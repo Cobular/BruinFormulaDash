@@ -63,13 +63,23 @@ Rectangle {
 
     CoolantTemp {
         x: 8
-        y: 91
+        y: 192
+
+        temp: 50.25
 
     }
 
     BatteryVoltage {
-        x: 0
-        y: 479
+        x: 8
+        y: 468
+        voltage: 50.555
+
+    }
+
+    BrakeRatio {
+        x: 745
+        y: 459
+        max: 88.88
     }
     
     CanDebugInfo {

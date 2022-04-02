@@ -5,13 +5,14 @@ AbstractImageTextComponent {
     width: 250
     height: 133
 
-    componentName: "Battery"
-    image_path: "/media/battery"
-    suffix: "V"
+    componentName: "Brake"
+    image_path: "/media/brake"
+    suffix: "%"
 
-    property double voltage: -1
-    value: voltage.toFixed(2)
+    property double max: -1
+    value: max.toFixed(2)
 
     property alias alert: coolantRectangle.alert
     property alias alertTarget: coolantRectangle.alertTarget
+
 }
