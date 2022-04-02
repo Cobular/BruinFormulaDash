@@ -17,6 +17,8 @@
         <file>src/components/BlackOnWhiteOutlinedNumber.qml</file>
         <file>src/components/EmptyComponent.qml</file>
         <file>src/components/CanDebugInfo.qml</file>
+        <file>src/components/MPHDisplayComponent.qml</file>
+        <file>src/components/AFRDisplayComponent.qml</file>
     </qresource>
     <qresource prefix="/src"/>
 </RCC>
