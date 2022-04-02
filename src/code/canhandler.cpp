@@ -36,13 +36,13 @@ void CanHandler::connectCanBus()
 
         const QVariant bitRate = m_canDevice->configurationParameter(QCanBusDevice::BitRateKey);
         if (bitRate.isValid()) {
-            const bool isCanFd =
-                    m_canDevice->configurationParameter(QCanBusDevice::CanFdKey).toBool();
-            const QVariant dataBitRate =
-                    m_canDevice->configurationParameter(QCanBusDevice::DataBitRateKey);
+//            const bool isCanFd =
+//                    m_canDevice->configurationParameter(QCanBusDevice::CanFdKey).toBool();
+//            const QVariant dataBitRate =
+//                    m_canDevice->configurationParameter(QCanBusDevice::DataBitRateKey);
 //            if (isCanFd && dataBitRate.isValid()) {
 //                setSocketCanStatus(tr("Plugin: %1, connected to %2 at %3 / %4 kBit/s")
-//                                  .arg(p.pluginName).arg(p.deviceInterfaceName)
+//                `                  .arg(p.pluginName).arg(p.deviceInterfaceName)
 //                                  .arg(bitRate.toInt() / 1000).arg(dataBitRate.toInt() / 1000));
 //            } else {
 //                setSocketCanStatus(tr("Plugin: %1, connected to %2 at %3 kBit/s")
@@ -103,6 +103,21 @@ static QString frameFlags(const QCanBusFrame &frame)
     return result;
 }
 
+static QString framePayloadString(const QCanBusFrame &frame) {
+    return QString::fromStdString(frame.payload().toHex(':').toStdString());
+}
+
+static qlonglong framePayloadUint(const QCanBusFrame &frame) {
+    bool didFail = false;
+    quint32 test =  frame.payload().toHex().toInt(&didFail, 16);
+
+    // Seems to be reporting an error incorrectly
+//    if (didFail) {
+//        qDebug() << "Payload failed to convert: " << frame.payload().toHex();
+//    }
+    return test;
+}
+
 void CanHandler::processReceivedFrames()
 {
     if (!m_canDevice)
@@ -120,18 +135,24 @@ void CanHandler::processReceivedFrames()
             return;
         } else
 
-        view = frame.toString();
+//        view = frame.toString();
 
-        const QString time = QString::fromLatin1("%1.%2  ")
-                .arg(frame.timeStamp().seconds(), 10, 10, QLatin1Char(' '))
-                .arg(frame.timeStamp().microSeconds() / 100, 4, 10, QLatin1Char('0'));
+//        const QString time = QString::fromLatin1("%1.%2  ")
+//                .arg(frame.timeStamp().seconds(), 10, 10, QLatin1Char(' '))
+//                .arg(frame.timeStamp().microSeconds() / 100, 4, 10, QLatin1Char('0'));
 
-        const QString flags = frameFlags(frame);
+//        const QString flags = frameFlags(frame);
 \
-         bool bStatus = false;
-         QString hexData = QString::fromStdString(frame.payload().toHex(':').toStdString());
-        setTestCanData(hexData.toInt(&bStatus, 16));
-//        m_ui->receivedMessagesEdit->append(time + flags + view);
+         switch (frame.frameId()) {
+            case 0x100:
+                 setTestCanData(framePayloadUint(frame));
+                 break;
+            case 0x631:
+                setRpmData(framePayloadUint(frame));
+                break;
+         }
+
+//        setTestCanData(framePayloadUint(frame));
     }
 }
 

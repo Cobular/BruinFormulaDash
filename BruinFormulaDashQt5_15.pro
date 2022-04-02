@@ -8,7 +8,8 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        src/code/canhandler.cpp
+        src/code/canhandler.cpp \
+        src/code/canhandler_qprops.cpp
 
 RESOURCES += qml.qrc \
     images.qrc
