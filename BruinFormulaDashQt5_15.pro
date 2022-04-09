@@ -1,6 +1,7 @@
 QT += quick serialbus
 
 CONFIG += c++11
+QML_IMPORT_NAME = BruinFormulaDashUiComponents
 
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
@@ -8,7 +9,8 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        src/code/canhandler.cpp
+        src/code/canhandler.cpp \
+        src/code/debugconsole.cpp
 
 RESOURCES += qml.qrc \
     images.qrc
@@ -31,4 +33,5 @@ DISTFILES += \
 
 HEADERS += \
     external_libs/mio.hpp \
-    src/code/canhandler.h
+    src/code/canhandler.h \
+    src/code/debugconsole.h

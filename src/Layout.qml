@@ -1,6 +1,6 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.0
-import com.cobular.CanHandler 1.0
+import BruinFormulaDashUiComponents
 import "components"
 
 Rectangle {
@@ -14,6 +14,10 @@ Rectangle {
         property bool alert: false;
         property int maxRPM: 14000
     }
+
+    //DebugConsole {
+    //    id: canDebugConsole
+    //}
 
     CanHandler {
         id: canhandler

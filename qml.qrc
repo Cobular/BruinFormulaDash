@@ -18,6 +18,8 @@
         <file>src/components/CanDebugInfo.qml</file>
         <file>src/components/MPHDisplayComponent.qml</file>
         <file>src/components/AFRDisplayComponent.qml</file>
+        <file>src/code/debugconsole.h</file>
+        <file>src/code/debugconsole.cpp</file>
     </qresource>
     <qresource prefix="/src"/>
 </RCC>

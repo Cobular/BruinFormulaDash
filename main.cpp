@@ -2,6 +2,7 @@
 #include <QQmlApplicationEngine>
 //#include <WS2812Lib/ws2812-rpi.h>
 #include "src/code/canhandler.h"
+#include "src/code/debugconsole.h"
 
 struct package_manager {
     static constexpr auto package_name = "com.cobular.CanHandler";
@@ -20,6 +21,9 @@ int main(int argc, char *argv[])
     qmlRegisterType<CanHandler>(package_manager::package_name,
         package_manager::package_version_major,
         package_manager::package_version_minor, "CanHandler");
+    qmlRegisterType<DebugConsole>(package_manager::package_name,
+        package_manager::package_version_major,
+        package_manager::package_version_minor, "DebugConsole");
 
     QGuiApplication app(argc, argv);
 
