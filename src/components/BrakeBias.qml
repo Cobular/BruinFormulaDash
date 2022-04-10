@@ -17,6 +17,7 @@ AbstractImageTextComponent {
     suffix: "%"
     dp: 1
     fontsize: 40
+    image_size: 85
     property alias alert: brakeRectangle.alert
     property alias alertTarget: brakeRectangle.alertTarget
 }

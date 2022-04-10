@@ -7,7 +7,8 @@ AlertRectangle {
     height: 113
 
     property string image_path: ""
-    property double value: 50.5
+    property int image_size: 90
+    property double value: 55.5
     property int dp: 0
     property int fontsize: 80
     property string prefix: ""
@@ -26,8 +27,8 @@ AlertRectangle {
 
         Image {
             id: image
-            width: 90
-            height: 90
+            width: image_size
+            height: image_size
             anchors.verticalCenter: parent.verticalCenter
             source: image_path
             fillMode: Image.PreserveAspectFit

@@ -72,12 +72,12 @@ Rectangle {
     }
 
     BrakeBias {
-        x: 725
+        x: 730
         y: 500
     }
 
     BatteryVoltage {
-        x: 0
+        x: 8
         y: 479
     }
     
