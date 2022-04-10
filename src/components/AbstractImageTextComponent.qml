@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import QtGraphicalEffects 1.0
 import QtQuick.Layouts 1.15
 
 AlertRectangle {
@@ -7,7 +8,11 @@ AlertRectangle {
     height: 113
 
     property string image_path: ""
-    property double value: 50.5
+    property int image_size: 90
+    property double value: 55.5
+    property int dp: 0
+    property int fontsize: 80
+    property string prefix: ""
     property string suffix: ""
     property alias componentName: alertRectangle.componentName
     property alias alert: alertRectangle.alert
@@ -23,15 +28,19 @@ AlertRectangle {
             source: image_path
             Layout.fillHeight: true
             Layout.fillWidth: true
-            Layout.preferredHeight: 90
-            Layout.preferredWidth: 90
+            Layout.preferredHeight: image_size
+            Layout.preferredWidth: image_size
             fillMode: Image.PreserveAspectFit
         }
 
         Text {
+            function parse(prefix, value, dp) {
+                return prefix + value.toFixed(dp);
+            }
+
             font.pointSize: 90
             color: alertRectangle.color
-            text: value
+            text: parse(prefix, value, dp)
             verticalAlignment: Text.AlignVCenter
             Layout.fillHeight: true
             Layout.fillWidth: true
@@ -40,13 +49,12 @@ AlertRectangle {
         }
 
         Text {
-            font.pointSize: 75
             text: suffix
             color: alertRectangle.color
             verticalAlignment: Text.AlignVCenter
             Layout.fillHeight: true
             Layout.fillWidth: true
-            fontSizeMode: Text.Fit
+            font.pointSize: fontsize
         }
 
 

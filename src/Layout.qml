@@ -73,25 +73,24 @@ Rectangle {
     CoolantTemp {
         x: 8
         y: 86
-
         temp: canhandler.coolantData
 
     }
 
     BatteryVoltage {
-        x: 4
-        y: 459
+        x: 8
+        y: 479
         voltage: canhandler.voltageData
-
     }
 
     BrakeRatio {
-        x: 774
-        y: 468
+        x: 730
+        y: 500
         max: canhandler.biasData
     }
 
     CanDebugInfo {
+        x: 8
         y: 578
         anchors.left: parent.left
         anchors.bottom: parent.bottom
