@@ -4,7 +4,8 @@ AbstractImageTextComponent {
     id: coolantRectangle
     width: 250
     height: 113
-    color: "#FFFFFF"
+
+    color: "#4ED4FF"
 
     componentName: "Coolant"
     image_path: "/media/coolant"

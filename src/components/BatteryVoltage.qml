@@ -5,13 +5,14 @@ AbstractImageTextComponent {
     width: 250
     height: 133
 
+    color: "#FBFF4E"
+
     componentName: "Battery"
     image_path: "/media/battery"
-    image_size: 75
     prefix: "\u2009"
     suffix: "V"
     dp: 2
-    fontsize: 46
+    fontsize: 48
 
     property double voltage: -1
     value: voltage.toFixed(2)

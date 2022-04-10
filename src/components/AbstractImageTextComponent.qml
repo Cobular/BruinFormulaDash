@@ -40,23 +40,13 @@ AlertRectangle {
 
             font.pointSize: 90
             color: alertRectangle.color
-            text: parse(prefix, value, dp)
+            text: parse(prefix, value, dp) + suffix
             verticalAlignment: Text.AlignVCenter
             Layout.fillHeight: true
             Layout.fillWidth: true
             fontSizeMode: Text.Fit
             Layout.preferredHeight: 130
         }
-
-        Text {
-            text: suffix
-            color: alertRectangle.color
-            verticalAlignment: Text.AlignVCenter
-            Layout.fillHeight: true
-            Layout.fillWidth: true
-            font.pointSize: fontsize
-        }
-
 
     }
 
