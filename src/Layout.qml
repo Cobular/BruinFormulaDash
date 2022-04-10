@@ -71,7 +71,7 @@ Rectangle {
         y: 91
     }
 
-    BrakeBias {
+    BrakeRatio {
         x: 730
         y: 500
     }
