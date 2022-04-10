@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.0
-import BruinFormulaDashUiComponents
+import com.cobular.CanHandler 1.0
+
 import "components"
 
 Rectangle {
@@ -14,10 +15,6 @@ Rectangle {
         property bool alert: false;
         property int maxRPM: 14000
     }
-
-    //DebugConsole {
-    //    id: canDebugConsole
-    //}
 
     CanHandler {
         id: canhandler
@@ -79,12 +76,32 @@ Rectangle {
         x: 0
         y: 479
     }
-    
+
     CanDebugInfo {
         x: 8
         y: 578
         canCountProp: canhandler.numberFramesWritten
         canStatusMessage: canhandler.canStatusMessage
         socketCanStatusMessage: canhandler.socketCanStatus
+    }
+
+    Rectangle {
+        x: 750
+        y: 200
+        width: 200
+        height: 303
+        border.color: "white"
+        color: "transparent"
+        DebugConsole {
+            id: canDebugConsole
+            color: "white"
+            fontSize: 10
+            lineHeight: 1.5
+            x: 2
+            y: 4
+            width: parent.width - 4
+            height: parent.height - 8
+            numLines: 20
+        }
     }
 }
