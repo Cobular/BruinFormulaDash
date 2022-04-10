@@ -35,20 +35,8 @@ public:
     void processFramesWritten(qint64 count);
     void busStatus();
 
-    void setNumberFramesWritten(const qint64 &a) {
-        if (a != m_numberFramesWritten) {
-            m_numberFramesWritten = a;
-            if (m_debug) {
-                char* number = new char[10];
-                m_debug->writeLine(QString("Wrote frame #") + QString(itoa(a, number, 10)));
-                delete [] number;
-            }
-            emit numberFramesWrittenChanged();
-        }
-    }
-    qint64 numberFramesWritten() const {
-        return m_numberFramesWritten;
-    }
+    void setNumberFramesWritten(const qint64 &a);
+    qint64 numberFramesWritten() const;
 
     void setCanStatusMessage(const QString &a);
     QString canStatusMessage() const;
