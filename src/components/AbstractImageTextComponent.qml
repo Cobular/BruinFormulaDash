@@ -22,7 +22,6 @@ AlertRectangle {
     RowLayout {
         anchors.fill: parent
 
-
         Image {
             id: image
             source: image_path

@@ -20,4 +20,5 @@ AbstractImageTextComponent {
     property alias voltage: batteryVoltage.value
     property alias alert: batteryVoltage.alert
     property alias alertTarget: batteryVoltage.alertTarget
+
 }

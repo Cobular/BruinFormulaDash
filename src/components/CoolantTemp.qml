@@ -15,6 +15,7 @@ AbstractImageTextComponent {
 
     property alias alert: coolantRectangle.alert
     property alias alertTarget: coolantRectangle.alertTarget
+
 }
 
 /*##^##

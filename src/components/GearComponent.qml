@@ -41,7 +41,6 @@ AlertRectangle {
         font.family: "Verdana"
     }
 
-
     Text {
         id: rpmTextBox
         y: -17
@@ -58,6 +57,7 @@ AlertRectangle {
         font.pointSize: 100
         font.family: "Verdana"
     }
+
 }
 
 /*##^##

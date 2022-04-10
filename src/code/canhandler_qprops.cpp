@@ -4,6 +4,7 @@
 void CanHandler::setNumberFramesWritten(const qint64 &a) {
     if (a != m_numberFramesWritten) {
         m_numberFramesWritten = a;
+        // TODO: switch DebugConsole usage to something more useful and remove these prints
         if (m_debug) {
             char* number = new char[10];
             m_debug->writeLine(QString("Wrote frame #") + QString(itoa(a, number, 10)));
@@ -16,6 +17,7 @@ qint64 CanHandler::numberFramesWritten() const {
     return m_numberFramesWritten;
 }
 
+
 void CanHandler::setCanStatusMessage(const QString &a) {
     if (a != m_canStatusMessage) {
         m_canStatusMessage = a;
@@ -25,6 +27,7 @@ void CanHandler::setCanStatusMessage(const QString &a) {
 QString CanHandler::canStatusMessage() const {
     return m_canStatusMessage;
 }
+
 
 void CanHandler::setTestCanData(const qint64 &a) {
     QString test = QStringLiteral("%1").arg(a);
@@ -38,6 +41,7 @@ qint64 CanHandler::testCanData() const {
     return m_canTestData;
 }
 
+
 void CanHandler::setSocketCanStatus(const QString &a) {
     if (a != m_socketCanStatus) {
         m_socketCanStatus = a;
@@ -49,16 +53,16 @@ QString CanHandler::socketCanStatus() const {
 }
 
 
-
 void CanHandler::setRpmData(const qint64 &a) {
-    if (a != m_rmpData) {
-        m_rmpData = a;
+    if (a != m_rpmData) {
+        m_rpmData = a;
         emit rpmDataChanged();
     }
 }
 qint64 CanHandler::rpmData() const {
-    return m_rmpData;
+    return m_rpmData;
 }
+
 
 void CanHandler::setCoolantData(const qint64 &a) {
     if (a != m_coolantData) {

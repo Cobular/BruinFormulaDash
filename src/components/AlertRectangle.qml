@@ -8,4 +8,5 @@ Rectangle {
     property bool alert: false
     property string alertTarget: "GearComponent"
     required property string componentName
+
 }

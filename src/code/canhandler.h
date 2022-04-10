@@ -37,13 +37,10 @@ public:
 
     void setNumberFramesWritten(const qint64 &a);
     qint64 numberFramesWritten() const;
-
     void setCanStatusMessage(const QString &a);
     QString canStatusMessage() const;
-
     void setTestCanData(const qint64 &a);
     qint64 testCanData() const;
-
     void setRpmData(const qint64 &a);
     qint64 rpmData() const;
     void setCoolantData(const qint64 &a);
@@ -54,7 +51,6 @@ public:
     qint64 biasData() const;
     void setVoltageData(const qint64 &a);
     qint64 voltageData() const;
-
     void setSocketCanStatus(const QString &a);
     QString socketCanStatus() const;
 
@@ -67,7 +63,6 @@ signals:
     void canStatusMessageChanged();
     void socketCanStatusChanged();
     void testCanDataChanged();
-
     void rpmDataChanged();
     void coolantDataChanged();
     void afrDataChanged();
@@ -83,8 +78,9 @@ private:
     QString m_socketCanStatus = "No Status Yet..";
     qint64 m_canTestData = -1;
 
-    qint64 m_rmpData = -1;
+    qint64 m_rpmData = -1;
     qint64 m_coolantData = -1;
+    // TODO: these three properties can have non-integer values; introduce support
     qint64 m_afrData = -1;
     qint64 m_biasData = -1;
     qint64 m_voltageData = -1;

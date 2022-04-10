@@ -38,4 +38,5 @@ Item  {
         width: (parent.width - 4) * (rpm / maxRpm)  // Sets the width to the correct percent. This is a javascript expression, using the rpm from above
         height: parent.height
     }
+
 }
