@@ -2,7 +2,8 @@
 
 CanHandler::CanHandler(QObject *parent) :
     QObject(parent),
-    m_busStatusTimer(new QTimer(this))
+    m_busStatusTimer(new QTimer(this)),
+    m_debug(nullptr)
 {
     connectCanBus();
 

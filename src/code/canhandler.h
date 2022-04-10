@@ -8,6 +8,8 @@
 #include <QDebug>
 #include <QTimer>
 
+#include "debugconsole.h"
+
 class CanHandler : public QObject
 {
     Q_OBJECT
@@ -15,6 +17,7 @@ class CanHandler : public QObject
     Q_PROPERTY(QString canStatusMessage READ canStatusMessage WRITE setCanStatusMessage NOTIFY canStatusMessageChanged)
     Q_PROPERTY(QString socketCanStatus READ socketCanStatus WRITE setSocketCanStatus NOTIFY socketCanStatusChanged)
     Q_PROPERTY(qint64 testCanData READ testCanData WRITE setTestCanData NOTIFY testCanDataChanged)
+    Q_PROPERTY(DebugConsole* debug WRITE setDebug)
     QML_ELEMENT
 
 public:
@@ -30,6 +33,11 @@ public:
     void setNumberFramesWritten(const qint64 &a) {
         if (a != m_numberFramesWritten) {
             m_numberFramesWritten = a;
+            if (m_debug) {
+                char* number = new char[10];
+                m_debug->writeLine(QString("Wrote frame #") + QString(itoa(a, number, 10)));
+                delete [] number;
+            }
             emit numberFramesWrittenChanged();
         }
     }
@@ -69,6 +77,10 @@ public:
         return m_socketCanStatus;
     }
 
+    void setDebug(DebugConsole* debug) {
+        m_debug = debug;
+    }
+
 signals:
     void numberFramesWrittenChanged();
     void canStatusMessageChanged();
@@ -85,6 +97,7 @@ private:
     qint64 m_canTestData = -1;
     std::unique_ptr<QCanBusDevice> m_canDevice;
     QTimer *m_busStatusTimer = nullptr;
+    DebugConsole* m_debug;
 };
 
 #endif // BACKEND_H

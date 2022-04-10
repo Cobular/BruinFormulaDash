@@ -18,6 +18,7 @@ Rectangle {
 
     CanHandler {
         id: canhandler
+        debug: canDebugConsole
     }
 
     // Creates an instance of the slider component we just made in RPMSliderComponent.qml
@@ -56,7 +57,7 @@ Rectangle {
         id: alertButton
         y: 100
         text: canhandler.userName
-        onClicked: () => dataObj.alert = !dataObj.alert
+        onClicked: () => {dataObj.alert = !dataObj.alert; canhandler.numberFramesWritten++;}
     }
 
     GearComponent {
