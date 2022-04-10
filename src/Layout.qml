@@ -47,7 +47,7 @@ Rectangle {
     AFRDisplayComponent {
         id: afrCounter
         x: 820
-        y: 84
+        y: 95
         width: 140
         height: 80
         afr: canhandler.afrData
@@ -79,13 +79,13 @@ Rectangle {
 
     BatteryVoltage {
         x: 8
-        y: 479
+        y: 460
         voltage: canhandler.voltageData
     }
 
     BrakeRatio {
-        x: 730
-        y: 500
+        x: 740
+        y: 505
         max: canhandler.biasData
     }
 
