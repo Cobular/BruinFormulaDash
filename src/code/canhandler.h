@@ -17,6 +17,11 @@ class CanHandler : public QObject
     Q_PROPERTY(QString canStatusMessage READ canStatusMessage WRITE setCanStatusMessage NOTIFY canStatusMessageChanged)
     Q_PROPERTY(QString socketCanStatus READ socketCanStatus WRITE setSocketCanStatus NOTIFY socketCanStatusChanged)
     Q_PROPERTY(qint64 testCanData READ testCanData WRITE setTestCanData NOTIFY testCanDataChanged)
+    Q_PROPERTY(qint64 rpmData READ rpmData WRITE setRpmData NOTIFY rpmDataChanged)
+    Q_PROPERTY(qint64 coolantData READ coolantData WRITE setCoolantData NOTIFY coolantDataChanged)
+    Q_PROPERTY(qint64 afrData READ afrData WRITE setAfrData NOTIFY afrDataChanged)
+    Q_PROPERTY(qint64 biasData READ biasData WRITE setBiasData NOTIFY biasDataChanged)
+    Q_PROPERTY(qint64 voltageData READ voltageData WRITE setVoltageData NOTIFY voltageDataChanged)
     Q_PROPERTY(DebugConsole* debug WRITE setDebug)
     QML_ELEMENT
 
@@ -45,37 +50,25 @@ public:
         return m_numberFramesWritten;
     }
 
-    void setCanStatusMessage(const QString &a) {
-        if (a != m_canStatusMessage) {
-            m_canStatusMessage = a;
-            emit numberFramesWrittenChanged();
-        }
-    }
-    QString canStatusMessage() const {
-        return m_canStatusMessage;
-    }
+    void setCanStatusMessage(const QString &a);
+    QString canStatusMessage() const;
 
-    void setTestCanData(const qint64 &a) {
-        QString test = QStringLiteral("%1").arg(a);
-        qDebug() << qPrintable(test);
-        if (a != m_canTestData) {
-            m_canTestData = a;
-            emit testCanDataChanged();
-        }
-    }
-    qint64 testCanData() const {
-        return m_canTestData;
-    }
+    void setTestCanData(const qint64 &a);
+    qint64 testCanData() const;
 
-    void setSocketCanStatus(const QString &a) {
-        if (a != m_socketCanStatus) {
-            m_socketCanStatus = a;
-            emit numberFramesWrittenChanged();
-        }
-    }
-    QString socketCanStatus() const {
-        return m_socketCanStatus;
-    }
+    void setRpmData(const qint64 &a);
+    qint64 rpmData() const;
+    void setCoolantData(const qint64 &a);
+    qint64 coolantData() const;
+    void setAfrData(const qint64 &a);
+    qint64 afrData() const;
+    void setBiasData(const qint64 &a);
+    qint64 biasData() const;
+    void setVoltageData(const qint64 &a);
+    qint64 voltageData() const;
+
+    void setSocketCanStatus(const QString &a);
+    QString socketCanStatus() const;
 
     void setDebug(DebugConsole* debug) {
         m_debug = debug;
@@ -87,6 +80,12 @@ signals:
     void socketCanStatusChanged();
     void testCanDataChanged();
 
+    void rpmDataChanged();
+    void coolantDataChanged();
+    void afrDataChanged();
+    void biasDataChanged();
+    void voltageDataChanged();
+
     void canConnectionFailed(QString err_str);
     void canConnectionSuccess(QString conn_str);
 
@@ -95,6 +94,13 @@ private:
     QString m_canStatusMessage = "No Status Yet..";
     QString m_socketCanStatus = "No Status Yet..";
     qint64 m_canTestData = -1;
+
+    qint64 m_rmpData = -1;
+    qint64 m_coolantData = -1;
+    qint64 m_afrData = -1;
+    qint64 m_biasData = -1;
+    qint64 m_voltageData = -1;
+
     std::unique_ptr<QCanBusDevice> m_canDevice;
     QTimer *m_busStatusTimer = nullptr;
     DebugConsole* m_debug;

@@ -1,5 +1,5 @@
 import QtQuick 2.0
-import QtGraphicalEffects 1.0
+import QtQuick.Layouts 1.15
 
 AlertRectangle {
     id: alertRectangle
@@ -14,48 +14,39 @@ AlertRectangle {
     property alias alertTarget: alertRectangle.alertTarget
     property string color: "white"
 
-    Row {
-        id: row
-        x: 0
-        y: 0
-        height: 113
+    RowLayout {
+        anchors.fill: parent
 
 
         Image {
             id: image
-            width: 90
-            height: 90
-            anchors.verticalCenter: parent.verticalCenter
             source: image_path
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+            Layout.preferredHeight: 90
+            Layout.preferredWidth: 90
             fillMode: Image.PreserveAspectFit
-            sourceSize.height: image.width
-            sourceSize.width: image.height
-
-            Colorize {
-                anchors.fill: image
-                source: image
-                hue: 1
-                saturation: 1
-                lightness: 1
-            }
         }
 
         Text {
-            height: 130
-            anchors.verticalCenter: parent.verticalCenter
-            horizontalAlignment: Text.AlignLeft
-            verticalAlignment: Text.AlignBottom
-            font.pointSize: 80
+            font.pointSize: 90
             color: alertRectangle.color
-            text: "51"
+            text: value
+            verticalAlignment: Text.AlignVCenter
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+            fontSizeMode: Text.Fit
+            Layout.preferredHeight: 130
         }
 
         Text {
-            height: 130
+            font.pointSize: 75
             text: suffix
-            anchors.verticalCenter: parent.verticalCenter
-            font.pointSize: 80
             color: alertRectangle.color
+            verticalAlignment: Text.AlignVCenter
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+            fontSizeMode: Text.Fit
         }
 
 
@@ -65,6 +56,6 @@ AlertRectangle {
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:1.66}D{i:2;invisible:true}
+    D{i:0;formeditorZoom:1.66}D{i:2}D{i:3}D{i:4}D{i:1}
 }
 ##^##*/

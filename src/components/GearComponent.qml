@@ -3,7 +3,7 @@ import QtQuick 2.0
 AlertRectangle {
     id: rectangle
     width: 440
-    height: 519
+    height: 496
     border.color: "#ffffff"
     border.width: 5
     componentName: "GearComponent"
@@ -25,7 +25,7 @@ AlertRectangle {
 
     Text {
         id: gearTextBox
-        y: 8
+        y: 14
         width: 384
         height: 556
         color: "#ffffff"
@@ -33,10 +33,11 @@ AlertRectangle {
         horizontalAlignment: Text.AlignHCenter
         lineHeight: 0
         wrapMode: Text.NoWrap
+        anchors.horizontalCenterOffset: 0
         anchors.horizontalCenter: parent.horizontalCenter
         renderType: Text.QtRendering
         textFormat: Text.AutoText
-        font.pointSize: 360
+        font.pointSize: 340
         font.family: "Verdana"
     }
 
@@ -61,6 +62,6 @@ AlertRectangle {
 
 /*##^##
 Designer {
-    D{i:0;height:519;width:384}
+    D{i:0;height:519;width:440}D{i:1}D{i:2}
 }
 ##^##*/

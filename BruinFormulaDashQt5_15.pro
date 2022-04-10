@@ -10,6 +10,7 @@ QML_IMPORT_NAME = BruinFormulaDashUiComponents
 SOURCES += \
         main.cpp \
         src/code/canhandler.cpp \
+        src/code/canhandler_qprops.cpp \
         src/code/debugconsole.cpp
 
 RESOURCES += qml.qrc \
@@ -29,6 +30,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 DISTFILES += \
     src/components/* \
     src/components/CanDebugInfo.qml
+    src/components/BrakeRatio.qml
     src/Layout.qml
 
 HEADERS += \
