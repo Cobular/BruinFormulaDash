@@ -55,45 +55,45 @@ qint64 CanHandler::rpmData() const {
     return m_rmpData;
 }
 
-void CanHandler::setCoolantData(const qint64 &a) {
+void CanHandler::setCoolantData(const float &a) {
     if (a != m_coolantData) {
         m_coolantData = a;
         emit coolantDataChanged();
     }
 }
-qint64 CanHandler::coolantData() const {
+float CanHandler::coolantData() const {
     return m_coolantData;
 }
 
 
-void CanHandler::setAfrData(const qint64 &a) {
+void CanHandler::setAfrData(const float &a) {
     if (a != m_afrData) {
         m_afrData = a;
         emit afrDataChanged();
     }
 }
-qint64 CanHandler::afrData() const {
+float CanHandler::afrData() const {
     return m_afrData;
 }
 
 
-void CanHandler::setBiasData(const qint64 &a) {
+void CanHandler::setBiasData(const float &a) {
     if (a != m_biasData) {
         m_biasData = a;
         emit biasDataChanged();
     }
 }
-qint64 CanHandler::biasData() const {
+float CanHandler::biasData() const {
     return m_biasData;
 }
 
 
-void CanHandler::setVoltageData(const qint64 &a) {
+void CanHandler::setVoltageData(const float &a) {
     if (a != m_voltageData) {
         m_voltageData = a;
         emit voltageDataChanged();
     }
 }
-qint64 CanHandler::voltageData() const {
+float CanHandler::voltageData() const {
     return m_voltageData;
 }

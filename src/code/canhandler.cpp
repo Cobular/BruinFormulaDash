@@ -1,4 +1,11 @@
 #include "canhandler.h"
+#include "external_libs/aemnet_definitions.h"
+#include "./utils.h"
+
+using aemnet_utils::msg_t;
+using aemnet_utils::msg_00_t;
+
+using namespace Utils;
 
 CanHandler::CanHandler(QObject *parent) :
     QObject(parent),
@@ -103,20 +110,7 @@ static QString frameFlags(const QCanBusFrame &frame)
     return result;
 }
 
-static QString framePayloadString(const QCanBusFrame &frame) {
-    return QString::fromStdString(frame.payload().toHex(':').toStdString());
-}
 
-static qlonglong framePayloadUint(const QCanBusFrame &frame) {
-    bool didFail = false;
-    qlonglong test =  frame.payload().toHex().toInt(&didFail, 16);
-
-    // Seems to be reporting an error incorrectly
-//    if (didFail) {
-//        qDebug() << "Payload failed to convert: " << frame.payload().toHex();
-//    }
-    return test;
-}
 
 void CanHandler::processReceivedFrames()
 {
@@ -142,29 +136,32 @@ void CanHandler::processReceivedFrames()
 //                .arg(frame.timeStamp().microSeconds() / 100, 4, 10, QLatin1Char('0'));
 
 //        const QString flags = frameFlags(frame);
-\
-         switch (frame.frameId()) {
+
+
+        switch (frame.frameId()) {
             case 0x100:
                 setTestCanData(framePayloadUint(frame));
                 break;
             case 0x1:
-                qDebug() << "Recieved RPM data";
                 setRpmData(framePayloadUint(frame));
                 break;
             case 0x2:
-                setCoolantData(framePayloadUint(frame));
+                setCoolantData(framePayloadFloat(frame));
                 break;
             case 0x3:
-                setVoltageData(framePayloadUint(frame));
+                setVoltageData(framePayloadFloat(frame));
                 break;
             case 0x4:
-                setAfrData(framePayloadUint(frame));
+                setAfrData(framePayloadFloat(frame));
                 break;
             case 0x5:
-                setBiasData(framePayloadUint(frame));
+                setBiasData(framePayloadFloat(frame));
                 break;
-         }
-
+            case AEMNET_MSG_ID(0x00):
+                msg_00_t* msg_00 = (msg_00_t *)framePayloadMessage(frame);
+                qDebug() << "Coolant Temp: " << msg_00->coolant_temp << " Intake Temp: " << msg_00->intake_temp;
+                break;
+        }
     }
 }
 

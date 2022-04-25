@@ -9,7 +9,8 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         src/code/canhandler.cpp \
-        src/code/canhandler_qprops.cpp
+        src/code/canhandler_qprops.cpp \
+        utils.cpp
 
 RESOURCES += qml.qrc \
     images.qrc
@@ -32,5 +33,7 @@ DISTFILES += \
     src/Layout.qml
 
 HEADERS += \
+    external_libs/aemnet_definitions.h \
     external_libs/mio.hpp \
-    src/code/canhandler.h
+    src/code/canhandler.h \
+    utils.h

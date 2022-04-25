@@ -34,3 +34,9 @@ Window {
         }
     }
 }
+
+/*##^##
+Designer {
+    D{i:0;formeditorZoom:0.75}D{i:1}D{i:3}D{i:4}D{i:2}
+}
+##^##*/

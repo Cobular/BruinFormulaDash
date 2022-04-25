@@ -10,7 +10,7 @@ AbstractImageTextComponent {
     suffix: "%"
 
     property double max: -1
-    value: max.toFixed(2)
+    value: Number.parseFloat(max).toFixed(1)
 
     property alias alert: coolantRectangle.alert
     property alias alertTarget: coolantRectangle.alertTarget

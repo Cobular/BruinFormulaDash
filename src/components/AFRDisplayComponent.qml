@@ -14,17 +14,9 @@ Item {
         x: 0
     }
 
-    function parseAfrToString(num) {
-        var out = String(Math.floor(num) % 100);
-        while (out.length < 2) {
-            out = "  " + out;
-        }
-        return out + "." + Math.floor((10*num) % 10);
-    }
-
     Text {
         id: afrValue
-        text: parseAfrToString(parent.afr)
+        text: parent.afr.toFixed(1)
         color: "#ffffff"
         font.pixelSize: 72
         x: 55

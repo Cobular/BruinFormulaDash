@@ -7,7 +7,7 @@ AlertRectangle {
     height: 113
 
     property string image_path: ""
-    property double value: 50.5
+    property string value: "50.5"
     property string suffix: ""
     property alias componentName: alertRectangle.componentName
     property alias alert: alertRectangle.alert

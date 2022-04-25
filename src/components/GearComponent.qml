@@ -25,7 +25,7 @@ AlertRectangle {
 
     Text {
         id: gearTextBox
-        y: 14
+        y: 25
         width: 384
         height: 556
         color: "#ffffff"
@@ -62,6 +62,6 @@ AlertRectangle {
 
 /*##^##
 Designer {
-    D{i:0;height:519;width:440}D{i:1}D{i:2}
+    D{i:0;height:496;width:440}D{i:1}D{i:2}
 }
 ##^##*/

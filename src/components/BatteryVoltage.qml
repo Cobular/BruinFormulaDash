@@ -10,7 +10,7 @@ AbstractImageTextComponent {
     suffix: "V"
 
     property double voltage: -1
-    value: voltage.toFixed(2)
+    value: Number.parseFloat(voltage).toFixed(1)
 
     property alias alert: coolantRectangle.alert
     property alias alertTarget: coolantRectangle.alertTarget

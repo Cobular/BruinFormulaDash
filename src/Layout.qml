@@ -44,9 +44,9 @@ Rectangle {
 
     AFRDisplayComponent {
         id: afrCounter
-        x: 820
-        y: 84
-        width: 140
+        x: 796
+        y: 86
+        width: 200
         height: 80
         afr: canhandler.afrData
     }
@@ -69,8 +69,10 @@ Rectangle {
     }
 
     CoolantTemp {
-        x: 8
-        y: 86
+        x: 12
+        y: 80
+        width: 274
+        height: 113
 
         temp: canhandler.coolantData
 
@@ -79,13 +81,17 @@ Rectangle {
     BatteryVoltage {
         x: 4
         y: 459
+        width: 282
+        height: 133
         voltage: canhandler.voltageData
 
     }
 
     BrakeRatio {
-        x: 774
+        x: 738
         y: 468
+        width: 286
+        height: 133
         max: canhandler.biasData
     }
     
@@ -101,9 +107,13 @@ Rectangle {
     }
 }
 
+
+
+
+
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:0.5}D{i:1}D{i:2}D{i:3}D{i:4}D{i:5}D{i:6}D{i:7}D{i:8}D{i:9}D{i:10}
+    D{i:0;formeditorZoom:0.66}D{i:1}D{i:2}D{i:3}D{i:4}D{i:5}D{i:6}D{i:7}D{i:8}D{i:9}D{i:10}
 D{i:11}D{i:12}
 }
 ##^##*/
