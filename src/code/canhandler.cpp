@@ -153,29 +153,42 @@ void CanHandler::processReceivedFrames()
                     break;
                 case AEMNET_MSG_ID(0x00): {
                     msg_00_t* msg_00 = (msg_00_t *)framePayloadMessage(frame);
-                    setCoolantData(msg_00->coolant_temp);
-                    setRpmData(msg_00->rpm);
-                    qDebug() << "Coolant Temp: " << msg_00->coolant_temp << " RPM: " << msg_00->rpm;
+                    float rpm = fixed_u16_2_float(swap_bytes(msg_00->rpm), 0.39063, 0.0);
+                    float coolant_temp = fixed_s8_2_float(msg_00->coolant_temp, 1.0, 0.0);
+                    setCoolantData(coolant_temp);
+                    setRpmData(rpm);
+                    qDebug() << "Coolant Temp: " << coolant_temp << " RPM: " << rpm;
                     break;
                 }
                 case AEMNET_MSG_ID(0x03):{
                     msg_03_t* msg_03 = (msg_03_t *)framePayloadMessage(frame);
-                    qDebug() << "AFR: " << msg_03->afr1 << " Voltage: " << msg_03->battery_voltage << " Gear: " << msg_03->gear;
+                    float afr1 = fixed_u8_2_float(msg_03->afr1, 0.057227, 7.325);
+                    float afr2 = fixed_u8_2_float(msg_03->afr2, 0.057227, 7.325);
+
+                    float battery_voltage = fixed_u16_2_float(swap_bytes(msg_03->battery_voltage), 0.0002455, 0.0);
+
+                    setAfrData((afr1 + afr2)/ 2);
+                    setVoltageData(battery_voltage);
+
+                    // TODO: SET THE GEAR
+
+                    qDebug() << "AFR: " << afr1 << "/" << afr2 << " Voltage: " << battery_voltage << " Gear: " << msg_03->gear;
                     break;
                 }
                 case AEMNET_MSG_ID(0x04):{
-                    msg_04_t* msg_04 = (msg_04_t *)framePayloadMessage(frame);
-                    qDebug() << "Oil Pressure: " << msg_04->oil_pressure;
+                    // Don't need any data from this one
+                    // msg_04_t* msg_04 = (msg_04_t *)framePayloadMessage(frame);
+                    // qDebug() << "Oil Pressure: " << msg_04->oil_pressure;
                     break;
                 }
                 case AEMNET_MSG_ID(0x08):{
                     msg_08_t* msg_08 = (msg_08_t *)framePayloadMessage(frame);
-                    qDebug() << "Coolant Temp: " << msg_08->trans_temp << " Intake Temp: " << msg_08->bitmap;
+                    qDebug() << "Transmission Temp: " << msg_08->trans_temp << " Bitmap I guess: " << msg_08->bitmap;
                     break;
                 }
                 case AEMNET_MSG_ID(0x09):{
                     msg_09_t* msg_09 = (msg_09_t *)framePayloadMessage(frame);
-                    qDebug() << "Coolant Temp: " << msg_09->brake_pressure << " Intake Temp: " << msg_09->launch_boost_target;
+                    qDebug() << "Brake Pressure: " << msg_09->brake_pressure << " Boost: " << msg_09->launch_boost_target;
                     break;
                 }
             }

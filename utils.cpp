@@ -67,8 +67,12 @@ namespace Utils {
         return internal_val;
     }
 
-    inline uint16_t swap_bytes(uint16_t a) {
+    uint16_t swap_bytes(uint16_t a) {
         return (a >> 8) | (a << 8);
     }
+
+//    uint16_t swap_bytes_short(unsigned short a) {
+//        return (a >> 8) | (a << 8);
+//    }
 }
 

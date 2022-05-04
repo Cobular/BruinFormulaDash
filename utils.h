@@ -41,7 +41,8 @@ namespace Utils {
     float fixed_u16_2_float(uint16_t val, float scale, float offset);
     float fixed_u8_2_float(uint8_t val, float scale, float offset);
     float fixed_s8_2_float(int8_t val, float scale, float offset);
-    inline uint16_t swap_bytes(uint16_t a);
+    uint16_t swap_bytes(uint16_t a);
+//    uint16_t swap_bytes_short(unsigned short a);
 }
 
 
