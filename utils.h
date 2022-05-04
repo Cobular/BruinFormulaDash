@@ -29,10 +29,19 @@ namespace Utils {
     qint32 makeInt32(QByteArray arr);
     qint16 makeInt16(QByteArray arr);
 
+    // CAN frame unpacking
     QString framePayloadString(const QCanBusFrame &frame);
     qlonglong framePayloadUint(const QCanBusFrame &frame);
     float framePayloadFloat(const QCanBusFrame &frame);
     msg_t* framePayloadMessage(const QCanBusFrame &frame);
+
+    // CAN frame individual datum unpacking
+    // See https://github.com/bruinracingelectronics/TeensyCanSender/blob/13dfaee2fabc16a8e0eaf0d0b694aad699c29417/src/main.cpp
+    // for examples of how these are to be used.
+    float fixed_u16_2_float(uint16_t val, float scale, float offset);
+    float fixed_u8_2_float(uint8_t val, float scale, float offset);
+    float fixed_s8_2_float(int8_t val, float scale, float offset);
+    inline uint16_t swap_bytes(uint16_t a);
 }
 
 

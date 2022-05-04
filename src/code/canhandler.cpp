@@ -4,6 +4,10 @@
 
 using aemnet_utils::msg_t;
 using aemnet_utils::msg_00_t;
+using aemnet_utils::msg_03_t;
+using aemnet_utils::msg_04_t;
+using aemnet_utils::msg_08_t;
+using aemnet_utils::msg_09_t;
 
 using namespace Utils;
 
@@ -23,7 +27,7 @@ void CanHandler::connectCanBus()
                                                         &errorString));
     if (!m_canDevice) {
         setCanStatusMessage(tr("Error creating device '%1', reason: '%2'")
-                                 .arg("socketcan").arg(errorString));
+                            .arg("socketcan").arg(errorString));
         return;
     }
 
@@ -43,24 +47,24 @@ void CanHandler::connectCanBus()
 
         const QVariant bitRate = m_canDevice->configurationParameter(QCanBusDevice::BitRateKey);
         if (bitRate.isValid()) {
-//            const bool isCanFd =
-//                    m_canDevice->configurationParameter(QCanBusDevice::CanFdKey).toBool();
-//            const QVariant dataBitRate =
-//                    m_canDevice->configurationParameter(QCanBusDevice::DataBitRateKey);
-//            if (isCanFd && dataBitRate.isValid()) {
-//                setSocketCanStatus(tr("Plugin: %1, connected to %2 at %3 / %4 kBit/s")
-//                `                  .arg(p.pluginName).arg(p.deviceInterfaceName)
-//                                  .arg(bitRate.toInt() / 1000).arg(dataBitRate.toInt() / 1000));
-//            } else {
-//                setSocketCanStatus(tr("Plugin: %1, connected to %2 at %3 kBit/s")
-//                                  .arg(p.pluginName).arg(p.deviceInterfaceName)
-//                                  .arg(bitRate.toInt() / 1000));
-//            }
+            //            const bool isCanFd =
+            //                    m_canDevice->configurationParameter(QCanBusDevice::CanFdKey).toBool();
+            //            const QVariant dataBitRate =
+            //                    m_canDevice->configurationParameter(QCanBusDevice::DataBitRateKey);
+            //            if (isCanFd && dataBitRate.isValid()) {
+            //                setSocketCanStatus(tr("Plugin: %1, connected to %2 at %3 / %4 kBit/s")
+            //                `                  .arg(p.pluginName).arg(p.deviceInterfaceName)
+            //                                  .arg(bitRate.toInt() / 1000).arg(dataBitRate.toInt() / 1000));
+            //            } else {
+            //                setSocketCanStatus(tr("Plugin: %1, connected to %2 at %3 kBit/s")
+            //                                  .arg(p.pluginName).arg(p.deviceInterfaceName)
+            //                                  .arg(bitRate.toInt() / 1000));
+            //            }
         }
-//        else {
-//            setSocketCanStatus(tr("Plugin: %1, connected to %2")
-//                    .arg(p.pluginName).arg(p.deviceInterfaceName));
-//        }
+        //        else {
+        //            setSocketCanStatus(tr("Plugin: %1, connected to %2")
+        //                    .arg(p.pluginName).arg(p.deviceInterfaceName));
+        //        }
 
         if (m_canDevice->hasBusStatus())
             m_busStatusTimer->start(2000);
@@ -78,21 +82,21 @@ void CanHandler::busStatus()
     }
 
     switch (m_canDevice->busStatus()) {
-    case QCanBusDevice::CanBusStatus::Good:
-        setSocketCanStatus("CAN bus status: Good.");
-        break;
-    case QCanBusDevice::CanBusStatus::Warning:
-        setSocketCanStatus("CAN bus status: Warning.");
-        break;
-    case QCanBusDevice::CanBusStatus::Error:
-        setSocketCanStatus("CAN bus status: Error.");
-        break;
-    case QCanBusDevice::CanBusStatus::BusOff:
-        setSocketCanStatus("CAN bus status: Bus Off.");
-        break;
-    default:
-        setSocketCanStatus("CAN bus status: Unknown.");
-        break;
+        case QCanBusDevice::CanBusStatus::Good:
+            setSocketCanStatus("CAN bus status: Good.");
+            break;
+        case QCanBusDevice::CanBusStatus::Warning:
+            setSocketCanStatus("CAN bus status: Warning.");
+            break;
+        case QCanBusDevice::CanBusStatus::Error:
+            setSocketCanStatus("CAN bus status: Error.");
+            break;
+        case QCanBusDevice::CanBusStatus::BusOff:
+            setSocketCanStatus("CAN bus status: Bus Off.");
+            break;
+        default:
+            setSocketCanStatus("CAN bus status: Unknown.");
+            break;
     }
 }
 
@@ -128,40 +132,53 @@ void CanHandler::processReceivedFrames()
             setCanStatusMessage(view);
             return;
         } else
-
-//        view = frame.toString();
-
-//        const QString time = QString::fromLatin1("%1.%2  ")
-//                .arg(frame.timeStamp().seconds(), 10, 10, QLatin1Char(' '))
-//                .arg(frame.timeStamp().microSeconds() / 100, 4, 10, QLatin1Char('0'));
-
-//        const QString flags = frameFlags(frame);
-
-
-        switch (frame.frameId()) {
-            case 0x100:
-                setTestCanData(framePayloadUint(frame));
-                break;
-            case 0x1:
-                setRpmData(framePayloadUint(frame));
-                break;
-            case 0x2:
-                setCoolantData(framePayloadFloat(frame));
-                break;
-            case 0x3:
-                setVoltageData(framePayloadFloat(frame));
-                break;
-            case 0x4:
-                setAfrData(framePayloadFloat(frame));
-                break;
-            case 0x5:
-                setBiasData(framePayloadFloat(frame));
-                break;
-            case AEMNET_MSG_ID(0x00):
-                msg_00_t* msg_00 = (msg_00_t *)framePayloadMessage(frame);
-                qDebug() << "Coolant Temp: " << msg_00->coolant_temp << " Intake Temp: " << msg_00->intake_temp;
-                break;
-        }
+            switch (frame.frameId()) {
+                case 0x100:
+                    setTestCanData(framePayloadUint(frame));
+                    break;
+                case 0x1:
+                    setRpmData(framePayloadUint(frame));
+                    break;
+                case 0x2:
+                    setCoolantData(framePayloadFloat(frame));
+                    break;
+                case 0x3:
+                    setVoltageData(framePayloadFloat(frame));
+                    break;
+                case 0x4:
+                    setAfrData(framePayloadFloat(frame));
+                    break;
+                case 0x5:
+                    setBiasData(framePayloadFloat(frame));
+                    break;
+                case AEMNET_MSG_ID(0x00): {
+                    msg_00_t* msg_00 = (msg_00_t *)framePayloadMessage(frame);
+                    setCoolantData(msg_00->coolant_temp);
+                    setRpmData(msg_00->rpm);
+                    qDebug() << "Coolant Temp: " << msg_00->coolant_temp << " RPM: " << msg_00->rpm;
+                    break;
+                }
+                case AEMNET_MSG_ID(0x03):{
+                    msg_03_t* msg_03 = (msg_03_t *)framePayloadMessage(frame);
+                    qDebug() << "AFR: " << msg_03->afr1 << " Voltage: " << msg_03->battery_voltage << " Gear: " << msg_03->gear;
+                    break;
+                }
+                case AEMNET_MSG_ID(0x04):{
+                    msg_04_t* msg_04 = (msg_04_t *)framePayloadMessage(frame);
+                    qDebug() << "Oil Pressure: " << msg_04->oil_pressure;
+                    break;
+                }
+                case AEMNET_MSG_ID(0x08):{
+                    msg_08_t* msg_08 = (msg_08_t *)framePayloadMessage(frame);
+                    qDebug() << "Coolant Temp: " << msg_08->trans_temp << " Intake Temp: " << msg_08->bitmap;
+                    break;
+                }
+                case AEMNET_MSG_ID(0x09):{
+                    msg_09_t* msg_09 = (msg_09_t *)framePayloadMessage(frame);
+                    qDebug() << "Coolant Temp: " << msg_09->brake_pressure << " Intake Temp: " << msg_09->launch_boost_target;
+                    break;
+                }
+            }
     }
 }
 
@@ -173,14 +190,14 @@ void CanHandler::processFramesWritten(qint64 count)
 void CanHandler::processErrors(QCanBusDevice::CanBusError error)
 {
     switch (error) {
-    case QCanBusDevice::ReadError:
-    case QCanBusDevice::WriteError:
-    case QCanBusDevice::ConnectionError:
-    case QCanBusDevice::ConfigurationError:
-    case QCanBusDevice::UnknownError:
-        setCanStatusMessage(m_canDevice->errorString());
-        break;
-    default:
-        break;
+        case QCanBusDevice::ReadError:
+        case QCanBusDevice::WriteError:
+        case QCanBusDevice::ConnectionError:
+        case QCanBusDevice::ConfigurationError:
+        case QCanBusDevice::UnknownError:
+            setCanStatusMessage(m_canDevice->errorString());
+            break;
+        default:
+            break;
     }
 }

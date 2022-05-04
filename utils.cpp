@@ -41,9 +41,34 @@ namespace Utils {
     }
 
     msg_t* framePayloadMessage(const QCanBusFrame &frame) {
-        auto bytes =  frame.payload().constData();
+        const char * bytes =  frame.payload().constData();
         msg_t* msg = (msg_t *)(bytes);
         return msg;
+    }
+
+    float fixed_u16_2_float(uint16_t val, float scale, float offset) {
+        float internal_val = val;
+        internal_val *= scale;
+        internal_val += offset;
+        return internal_val;
+    }
+
+    float fixed_u8_2_float(uint8_t val, float scale, float offset) {
+        float internal_val = val;
+        internal_val *= scale;
+        internal_val += offset;
+        return internal_val;
+    }
+
+    float fixed_s8_2_float(int8_t val, float scale, float offset) {
+        float internal_val = val;
+        internal_val *= scale;
+        internal_val += offset;
+        return internal_val;
+    }
+
+    inline uint16_t swap_bytes(uint16_t a) {
+        return (a >> 8) | (a << 8);
     }
 }
 
