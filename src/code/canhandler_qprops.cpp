@@ -68,6 +68,7 @@ float CanHandler::coolantData() const {
 
 void CanHandler::setAfrData(const float &a) {
     if (a != m_afrData) {
+        qDebug() << "Setting AFR Data: " << a ;
         m_afrData = a;
         emit afrDataChanged();
     }
@@ -96,4 +97,24 @@ void CanHandler::setVoltageData(const float &a) {
 }
 float CanHandler::voltageData() const {
     return m_voltageData;
+}
+
+void CanHandler::setGearData(const qint64 &a) {
+    if (a != m_gearData) {
+        m_gearData = a;
+        emit gearDataChanged();
+    }
+}
+qint64 CanHandler::gearData() const {
+    return m_gearData;
+}
+
+void CanHandler::setSpeedData(const float &a) {
+    if (a != m_speedData) {
+        m_speedData = a;
+        emit speedDataChanged();
+    }
+}
+float CanHandler::speedData() const {
+    return m_speedData;
 }

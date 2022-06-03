@@ -39,7 +39,7 @@ Rectangle {
     MPHDisplayComponent {
         id: mphCounter
         height: sliderComponent.height
-        mph: 23
+        mph: canhandler.speedData
     }
 
     AFRDisplayComponent {
@@ -51,18 +51,11 @@ Rectangle {
         afr: canhandler.afrData
     }
 
-    Button {
-        id: alertButton
-        x: 12
-        y: 322
-        text: canhandler.userName
-        onClicked: () => dataObj.alert = !dataObj.alert
-    }
-
     GearComponent {
         id: gearComponent
         anchors.bottom: parent.bottom
         rpm: canhandler.rpmData
+        gear: canhandler.gearData
         alert: dataObj.alert
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.bottomMargin: 0
@@ -111,9 +104,4 @@ Rectangle {
 
 
 
-/*##^##
-Designer {
-    D{i:0;formeditorZoom:0.66}D{i:1}D{i:2}D{i:3}D{i:4}D{i:5}D{i:6}D{i:7}D{i:8}D{i:9}D{i:10}
-D{i:11}D{i:12}
-}
-##^##*/
+

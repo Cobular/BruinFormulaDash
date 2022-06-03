@@ -25,9 +25,16 @@ Item {
 
     Text {
         id: mphValue
-        text: parseIntToString(parent.mph)
+        text: parent.mph.toString()
         font.pixelSize: 72
         x: 0
         y: -4
+        color: "#808080"
     }
 }
+
+/*##^##
+Designer {
+    D{i:0;formeditorZoom:1.66}D{i:1}D{i:2}
+}
+##^##*/

@@ -166,11 +166,14 @@ void CanHandler::processReceivedFrames()
                     float afr2 = fixed_u8_2_float(msg_03->afr2, 0.057227, 7.325);
 
                     float battery_voltage = fixed_u16_2_float(swap_bytes(msg_03->battery_voltage), 0.0002455, 0.0);
+                    float speed = fixed_u16_2_float(swap_bytes(msg_03->vehicle_speed), 0.00390625, 0.0);
 
+                    // ONLY NEED one of the AFRs
                     setAfrData((afr1 + afr2)/ 2);
                     setVoltageData(battery_voltage);
 
-                    // TODO: SET THE GEAR
+                    setGearData(msg_03->gear);
+                    setSpeedData(speed);
 
                     qDebug() << "AFR: " << afr1 << "/" << afr2 << " Voltage: " << battery_voltage << " Gear: " << msg_03->gear;
                     break;

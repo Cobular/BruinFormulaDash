@@ -8,20 +8,11 @@ AlertRectangle {
     border.width: 5
     componentName: "GearComponent"
 
-    property int rpm: 16666
+    property int rpm: -1
+    property int gear: -1
     property alias alert: rectangle.alert
     property alias alertTarget: rectangle.alertTarget
 
-    function parseGear(rpm) {
-        if (rpm > 1000 && rpm < 2000)
-            return "1";
-        else if (rpm > 2000 && rpm < 3000)
-            return "2";
-        else if (rpm > 3000 && rpm < 4000)
-            return "3";
-        else
-            return "N";
-    }
 
     Text {
         id: gearTextBox
@@ -29,7 +20,7 @@ AlertRectangle {
         width: 384
         height: 556
         color: "#ffffff"
-        text: parseGear(rpm)
+        text: gear.toString()
         horizontalAlignment: Text.AlignHCenter
         lineHeight: 0
         wrapMode: Text.NoWrap

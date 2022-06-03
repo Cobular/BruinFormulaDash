@@ -22,6 +22,8 @@ class CanHandler : public QObject
     Q_PROPERTY(float afrData READ afrData WRITE setAfrData NOTIFY afrDataChanged)
     Q_PROPERTY(float biasData READ biasData WRITE setBiasData NOTIFY biasDataChanged)
     Q_PROPERTY(float voltageData READ voltageData WRITE setVoltageData NOTIFY voltageDataChanged)
+    Q_PROPERTY(qint64 gearData READ gearData WRITE setGearData NOTIFY gearDataChanged)
+    Q_PROPERTY(qint64 speedData READ speedData WRITE setSpeedData NOTIFY speedDataChanged)
 
     QML_ELEMENT
 
@@ -54,6 +56,10 @@ public:
     float biasData() const;
     void setVoltageData(const float &a);
     float voltageData() const;
+    void setGearData(const qint64 &a);
+    qint64 gearData() const;
+    void setSpeedData(const float &a);
+    float speedData() const;
 
     void setSocketCanStatus(const QString &a);
     QString socketCanStatus() const;
@@ -69,6 +75,8 @@ signals:
     void afrDataChanged();
     void biasDataChanged();
     void voltageDataChanged();
+    void gearDataChanged();
+    void speedDataChanged();
 
     void canConnectionFailed(QString err_str);
     void canConnectionSuccess(QString conn_str);
@@ -84,6 +92,8 @@ private:
     float m_afrData = -1;
     float m_biasData = -1;
     float m_voltageData = -1;
+    qint64 m_gearData = -1;
+    float m_speedData = -1;
 
     std::unique_ptr<QCanBusDevice> m_canDevice;
     QTimer *m_busStatusTimer = nullptr;
